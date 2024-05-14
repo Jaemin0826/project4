@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+
+            font-family: "Song Myung", serif;
+        }
+
+        .conA{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-color: #0035F1;
+
+            display: flex;
+            justify-content: center;
+            align-items: center ;
+            gap: 60px;
+        }
+
+        .conA2{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column;
+        }
+
+        .wave{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-size: 1000px 100px;
+            background-image: url(Wave.png);
+            
+            animation: animate 4s ease-in-out infinite;
+        }
+
+        @keyframes animate {
+            
+            0%{
+                transform: translateY(0px);
+            }
+
+            50%{
+                transform: translateY(20px);
+            }
+
+            100%{
+                transform: translateY(0px);
+            }
+        }
+
+        #wave1{
+            z-index: 1000;
+            opacity: 1;
+            background-position-x: 400px;
+        }
+
+        #wave2{
+            z-index: 999;
+            opacity: 0.5;
+            background-position-x: 300px;
+        }
+
+        #wave3{
+            z-index: 998;
+            opacity: 0.3;
+            background-position-x: 200px;
+        }
+
+        #wave4{
+            z-index: 998;
+            opacity: 0.7;
+            background-position-x: 100px;
+        }
+
+        .conB{
+            padding: 80px;
+            height: 1000px;
+            z-index: 998;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+        }
+
+        .button{
+            border-radius: 40px;
+            border: 1px solid aliceblue;
+            padding: 4px 12px;
+            color: #fff;
+        }
+
+        h1{
+            font-size: 60px;
+            color : #fff;
+        }
+
+        .head{
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .conB img:hover{
+            transform: scale(1.1);
+        }
+
+        .conB img{
+            transition: all 0.3s ease;
+        }
+
+        .conC2{
+            margin-left: auto;
+            margin-right: auto;
+            width: 400px;
+            margin-bottom: 120px;
+        }
+
+        .conC2 p{
+            display: inline;
+            margin-right: 16px;
+            font-size: 56px;
+            font-weight: 600;
+            color: #d9d9d9;
+            transition: color 0.2s ease;
+        }
+
+        .conC2 p.active{
+            color: #0035F1;
+        }
+
+        .scroll-text {
+            font-size: 48px;
+            font-weight: bold;
+            color: #222;
+
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+        }
+
+        .conC{
+            padding-bottom: 500px;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        }
+       
+    </style>
+
+</head>
+
+<body>
+
+<div class="conA">
+    <div class="cha1">
+        <img src="White.png">
+    </div>
+<div class="conA2">
+    <div class="head">
+        <h1>해로,토로와<br>시흥 축제 알아보기</h1>
+    </div>
+
+    <div class="button">
+        <h2>아래로 스크롤 하세요!</h2>
+    </div>
+
+</div>
+<div class="cha2">
+    <img src="Yellow.png">
+</div>
+
+    <div class="wave" id="wave1" ></div>
+    <div class="wave" id="wave2" ></div>
+    <div class="wave" id="wave3" ></div>
+    <div class="wave" id="wave4" ></div>
+</div>
+
+<div class="conB">
+    <img src="image 1.png" width="400px">
+    <img src="image 2.png" width="400px">
+    <img src="image 3.png" width="400px">
+</div>
+
+
+
+<div class="conC">
+    <div class="conC2">
+        <p>거북섬</p>
+        <p>하와이안 페스티벌</p>
+        <p>시흥갯골축제</p>
+        <p>시흥 전국 하프마라톤대회</p>
+        <p>시흥시 평생학습축제</p>
+        <p>월곶포구축제</p>
+        <p>시흥시장배 서핑대회</p>
+        <p>시흥시 청소년 동아리축제</p>
+        <p>책문화축제</p>
+        <p>연성문화제</p>
+        <p>경기도 세계 커피콩축제</p>
+        <p>거북섬 파티</p>
+        <p>시흥 거북썸 축제</p>
+        <p>시흥 갯골 축제</p>
+        <p>거북섬 밤 페스티벌</p>
+    </div>
+
+    <div class="scroll-text" id="scrollText">
+        감사합니다!
+      </div>
+</div>
+</body>
+
+<script>
+    let wave1Tag = document.querySelector('#wave1');
+    let wave2Tag = document.querySelector("#wave2");
+    let wave3Tag = document.querySelector("#wave3");
+    let wave4Tag = document.querySelector("#wave4");
+
+    window.addEventListener("scroll" , function(){
+        let value = window.scrollY;
+
+        wave1Tag.style.backgroundPositionX = 400 + value * 4 + `px`;
+        wave2Tag.style.backgroundPositionX = 300 + value * -4 + `px`;
+        wave3Tag.style.backgroundPositionX = 200 + value * 2 + `px`;
+        wave4Tag.style.backgroundPositionX = 100 + value * -2 + `px`;
+    });
+
+
+    const containerTag = document.querySelector("div.conC");
+    const pTags = document.querySelectorAll("div.conC2 p");
+
+        let windowMid = window.innerHeight/2;
+
+        document.addEventListener("scroll", function(){
+            
+            pTags.forEach(tag =>{
+                let pTop = tag.getBoundingClientRect().top;
+                let pMid = pTop + tag.getBoundingClientRect().height/2;
+
+                if(Math.abs(pMid-windowMid) < 80){
+                    tag.classList.add("active");
+                    console.log("test");
+                }else{
+                    tag.classList.remove("active");
+                }
+            })
+        })
+
+
+        // 텍스트가 나타날 요소를 가져옵니다.
+const scrollText = document.getElementById('scrollText');
+
+// 스크롤 이벤트를 감지합니다.
+window.addEventListener('scroll', function() {
+  // 페이지 상단으로부터의 스크롤 위치를 가져옵니다.
+  const scrollPosition = window.scrollY;
+  
+  // 원하는 스크롤 위치에 따라 텍스트를 나타내거나 숨깁니다.
+  if (scrollPosition > 2500) { // 여기서 100은 스크롤 위치 조건입니다. 조건을 원하는대로 조절할 수 있습니다.
+    scrollText.style.opacity = '1';
+  } else {
+    scrollText.style.opacity = '0';
+  }
+});
+</script>
+
+</html>
